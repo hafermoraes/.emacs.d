@@ -98,8 +98,10 @@ Ao invés de poluir o init.el com detalhes de configurações específicas, usa-
 Recurso de completar comandos com base nas letras iniciais.
 #+BEGIN_SRC emacs-lisp
 ;; Autocomplete
-(require 'auto-complete)
-(require 'auto-complete-config)
+(use-package auto-complete
+  :ensure t)
+;; (use-package auto-complete-config
+;;   :ensure t)
 (ac-config-default)
 (global-auto-complete-mode t)
 #+END_SRC
@@ -141,7 +143,8 @@ Folding de comentários de scripts do R
 Configurações para tornar o emacs um editor similar ao RStudio e para trabalhar bem com arquivos .Rmd
 #+BEGIN_SRC emacs-lisp
 ;; R-Markdown
-(require 'markdown-mode)
+(use-package markdown-mode
+  :ensure t)
 ;;(require 'poly-R)
 ;;(require 'poly-markdown)
 ;;(add-to-list 'auto-mode-alist '("\\.Rmd\'" . poly-markdown+r-mode))
@@ -281,7 +284,8 @@ Configuracoes específicas para a compilacao de documentos LaTeX.
 Apresentacoes baseadas em arquivos =html=. Necessita de configuracao adicional e um pouco de trabalho.
 #+BEGIN_SRC emacs-lisp
 ;; reveal.js
-(require 'ox-reveal)
+(use-package ox-reveal
+  :ensure t)
 #+END_SRC
 
 

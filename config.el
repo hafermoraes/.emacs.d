@@ -70,8 +70,10 @@
 ;      'langtool-autoshow-detail-popup)
 
 ;; Autocomplete
-(require 'auto-complete)
-(require 'auto-complete-config)
+(use-package auto-complete
+  :ensure t)
+;; (use-package auto-complete-config
+;;   :ensure t)
 (ac-config-default)
 (global-auto-complete-mode t)
 
@@ -100,7 +102,8 @@
          ))
 
 ;; R-Markdown
-(require 'markdown-mode)
+(use-package markdown-mode
+  :ensure t)
 ;;(require 'poly-R)
 ;;(require 'poly-markdown)
 ;;(add-to-list 'auto-mode-alist '("\\.Rmd\'" . poly-markdown+r-mode))
@@ -212,7 +215,8 @@
 (setq org-latex-to-pdf-process '("texi2dvi --pdf --clean --verbose --batch %f"))
 
 ;; reveal.js
-(require 'ox-reveal)
+(use-package ox-reveal
+  :ensure t)
 
 ;; pdf-tools e midnight mode
 (add-hook 'pdf-view-mode-hook (lambda ()
