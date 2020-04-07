@@ -111,6 +111,8 @@ Recurso de completar comandos com base nas letras iniciais.
 Facilitar o trabalho com a linguagem R
 #+BEGIN_SRC emacs-lisp
 ;; ESS
+(use-package ess
+  :ensure t)
 (setq ess-use-auto-complete t)
 #+END_SRC
 
@@ -120,6 +122,8 @@ Folding de comentários de scripts do R
 ;(add-hook 'outline-mode-hook 
 ;          (lambda () 
 ;            (require 'outline-cycle)))
+(use-package outline-magic
+  :ensure t)
 (add-hook 'outline-minor-mode-hook 
           (lambda () 
             (require 'outline-magic)
@@ -175,6 +179,9 @@ Configurações para tornar o emacs um editor similar ao RStudio e para trabalha
 ** interleave-mode
 Tomar notas de livros e pdfs
 #+BEGIN_SRC emacs-lisp
+(use-package interleave
+  :ensure t)
+
   (setq interleave-split-direction (quote vertical)
 	interleave-split-lines 20
 	interleave-disable-narrowing t
@@ -293,6 +300,8 @@ Apresentacoes baseadas em arquivos =html=. Necessita de configuracao adicional e
 Anotação de arquivos pdf e cores mais escuras para tornar a leitura mais agradável.
 #+BEGIN_SRC emacs-lisp
 ;; pdf-tools e midnight mode
+(use-package pdf-tools
+  :ensure t)
 (add-hook 'pdf-view-mode-hook (lambda ()
 				(pdf-view-midnight-minor-mode))) ; automatically turns on midnight-mode for pdfs
 (setq pdf-view-midnight-colors '("light gray" . "gray14" )) ; set the amber profile as default (see below)
