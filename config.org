@@ -55,6 +55,9 @@
 #+BEGIN_SRC emacs-lisp
 (setq user-full-name "Rafael Rodrigues de Moraes"
       user-mail-address "hafer.moraes@gmail.com")
+
+;; chaves de acesso aos bancos de dados
+(org-babel-load-file (expand-file-name "~/.emacs.d/sql-connector.org"))
 #+END_SRC
 
 ** Configurações específicas 
@@ -62,6 +65,10 @@ Ao invés de poluir o init.el com detalhes de configurações específicas, usa-
 #+BEGIN_SRC emacs-lisp
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
+
+(setq auto-mode-alist (cons '("\\.tex$" . latex-mode) auto-mode-alist)) ; https://tex.stackexchange.com/questions/275794/emacs-is-not-recognizing-files-as-latex-and-going-into-latex-mode
+(setq LaTeX-indent-level 4) 
+(setq LaTeX-item-indent 2)
 #+END_SRC
 
 
@@ -114,6 +121,7 @@ Facilitar o trabalho com a linguagem R
 (use-package ess
   :ensure t)
 (setq ess-use-auto-complete t)
+(setq ess-ask-for-ess-directory nil)
 #+END_SRC
 
 Folding de comentários de scripts do R
@@ -148,6 +156,8 @@ Configurações para tornar o emacs um editor similar ao RStudio e para trabalha
 #+BEGIN_SRC emacs-lisp
 ;; R-Markdown
 (use-package markdown-mode
+  :ensure t)
+(use-package poly-R
   :ensure t)
 ;;(require 'poly-R)
 ;;(require 'poly-markdown)
@@ -220,7 +230,7 @@ Blocos de código em arquivos =.org=
 #+END_SRC
 
 ** Org-capture
-Para anotacoes rápidas e direcionadas em arquivos específicos
+Para anotações rápidas e direcionadas em arquivos específicos
 #+BEGIN_SRC emacs-lisp
 ;; Org-Capture
 (setq org-default-notes-file (concat org-directory "/inbox.org"))
@@ -228,16 +238,16 @@ Para anotacoes rápidas e direcionadas em arquivos específicos
 ;; Templates do Org-Capture
 (setq org-capture-templates
       '(("t" "Todo [Inbox]" entry
-	 (file+headline "~/org/inbox.org" "Tasks")
+	 (file+headline "~/gtd/inbox.org" "Tasks")
         "* TODO %^{Título}\n %^{Breve descritivo da tarefa}\n  %U \n\n")
 	("j" "Journal" entry
-	 (file+olp+datetree "~/org/journal.org")
+	 (file+olp+datetree "~/gtd/journal.org")
 	 "* %?\nEntered on %U\n  %i\n  %a")
 	))
-(setq org-agenda-files '("~/org/inbox.org"
-                         "~/org/notes.org"))
-(setq org-refile-targets '(("~/org/inbox.org" :maxlevel . 3)
-                           ("~/org/notes.org" :maxlevel . 2)))
+(setq org-agenda-files '("~/gtd/inbox.org"
+                         "~/gtd/notes.org"))
+(setq org-refile-targets '(("~/gtd/inbox.org" :maxlevel . 3)
+                           ("~/gtd/notes.org" :maxlevel . 2)))
 #+END_SRC
 ** Org-latex
 Configuracoes específicas para a compilacao de documentos LaTeX.
